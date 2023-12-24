@@ -23,5 +23,9 @@ function addBookToSite() {
     }
 }
 addBookToSite();
+
+function readStatus() {
+    
+}
 /*let ape = new Book("Api", "Gianni", "300 pages", "not read yet");
 addBookToLibrary(ape);*/

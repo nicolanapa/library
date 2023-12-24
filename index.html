@@ -8,6 +8,28 @@
         <script src="./scripts/javascript.js" defer></script>
     </head>
     <body>
+        <div class="yours">Your Library</div>
         <div id="library"></div>
+        <div class="book-form">
+            <button>NEW BOOK</button>
+            <dialog>
+                <form method="post" action="https://httpbin.org/post">
+                    <label for="title">Book's Title:</label>
+                    <input type="text" id="title" name="title">
+
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+
+                    <label for="pages">Pages:</label>
+                    <input type="text" id="pages" name="pages" placeholder="*** pages">
+
+                    <label for="read">Did you read it?</label>
+                    <input type="checkbox" id="read" name="read">
+
+                    <button type="submit">Submit your book!</button>
+                </form>
+            </dialog>
+            
+        </div>
     </body>
 </html>
