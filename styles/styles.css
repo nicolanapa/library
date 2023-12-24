@@ -1,0 +1,16 @@
+* {
+    font-family: roboto, system-ui;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 10%;
+    grid-auto-rows: 10%;
+    gap: 20px;
+}
+
+.book {
+    padding: 10px 20px;
+    margin: 20px;
+}
