@@ -9,29 +9,47 @@ function Book(title, autor, pages, read) {
     }
 }
 
-function addBookToLibrary() {
+function addBookToLibrary() { // Get form value and input them in myLibrary
     let bookTitle = document.getElementById("title").value;
     let bookAuthor = document.getElementById("author").value;
     let bookPages = document.getElementById("pages").value;
     let bookRead = document.getElementById("read").value;
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
     myLibrary[length] = newBook.info();
-    addBookToSite();
+    addBookToSite(bookRead);
 }
 
-function addBookToSite() {
+function addBookToSite(bookRead) { // Add the book in the website
     for (let i = 0; i < myLibrary.length; i++) {
         let bookContainer = document.querySelector("#library")
         let newBook = document.createElement("div");
+        let deleteButton = document.createElement("button");
+        let readButton = document.createElement("button");
+        readButton.classList.add("readButton");
+        deleteButton.classList.add("deleteButton", "readButton");
         newBook.classList.add("book");
         newBook.textContent = myLibrary[i];
         bookContainer.appendChild(newBook);
+        readButton.textContent = "Change Read Status";
+        deleteButton.textContent = "Delete this book";
+        newBook.appendChild(deleteButton);
+        newBook.appendChild(readButton);
+        readButton.addEventListener("click", function() {
+                if ( bookRead == "read" ) {
+                    bookRead = "not read it yet";
+                }
+                else {
+                    bookRead = "read";
+                }
+        });
     }
 }
 
-function readStatus() {
-//Books already created read not read status
-}
+/*function readStatus() {
+    bookRead =  document.getElementById("read").value;
+    
+}*/
+
 
 let dialogNewBook = document.querySelector("#book-dialog");
 let buttonNewBook = document.querySelector("#newBookButton")
