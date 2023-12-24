@@ -37,9 +37,17 @@ function addBookToSite(bookRead) { // Add the book in the website
         readButton.addEventListener("click", function() {
                 if ( bookRead == "read" ) {
                     bookRead = "not read it yet";
+                    let myLibrary2 = myLibrary[i].toString();
+                    newBook.textContent = myLibrary2.replace(/read/g, "not read it yet");
+                    newBook.appendChild(deleteButton);
+                    newBook.appendChild(readButton);
                 }
-                else {
+                else if ( bookRead == "not read it yet" ) {
                     bookRead = "read";
+                    let myLibrary2 = myLibrary[i].toString();
+                    newBook.textContent = myLibrary2.replace(/not read it yet/g, "read");
+                    newBook.appendChild(deleteButton);
+                    newBook.appendChild(readButton);
                 }
         });
     }
