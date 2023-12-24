@@ -11,9 +11,9 @@
         <div class="yours">Your Library</div>
         <div id="library"></div>
         <div class="book-form">
-            <button>NEW BOOK</button>
-            <dialog>
-                <form method="post" action="https://httpbin.org/post">
+            <button id="newBookButton">NEW BOOK</button>
+            <dialog id="book-dialog">
+                <form id="book-form" method="dialog" action="https://httpbin.org/post">
                     <label for="title">Book's Title:</label>
                     <input type="text" id="title" name="title">
 
@@ -26,7 +26,7 @@
                     <label for="read">Did you read it?</label>
                     <input type="checkbox" id="read" name="read">
 
-                    <button type="submit">Submit your book!</button>
+                    <button id="form-button" type="submit">Submit your book!</button>
                 </form>
             </dialog>
             
