@@ -56,12 +56,6 @@ function addBookToSite(bookRead) { // Add the book in the website
     }
 }
 
-/*function readStatus() {
-    bookRead =  document.getElementById("read").value;
-    
-}*/
-
-
 let dialogNewBook = document.querySelector("#book-dialog");
 let buttonNewBook = document.querySelector("#newBookButton")
 buttonNewBook.addEventListener("click", function() {
@@ -72,6 +66,3 @@ let formButton = document.querySelector("#form-button");
 formButton.addEventListener("click", function() {
     addBookToLibrary();
 });
-
-//let bookForm = document.querySelector("#book-form");
-//let newBook =  new Book(bookForm#title, bookForm#author, bookForm#pages, bookForm#read);
