@@ -1,4 +1,4 @@
-let myLibrary = ["Harry Potter by Rowling, 300 pages, read", "Jelson by Edwards, 210 pages, read"];
+let myLibrary = [];
 function Book(title, autor, pages, read) {
     this.title = title;
     this.autor = autor;
@@ -10,12 +10,13 @@ function Book(title, autor, pages, read) {
 }
 
 function addBookToLibrary() {
-    let bookTitle = document.getElementById("#title").value;
-    let bookAuthor = document.getElementById("#author").value;
-    let bookPages = document.getElementById("#pages").value;
-    let bookRead = document.getElementById("#read").value;
+    let bookTitle = document.getElementById("title").value;
+    let bookAuthor = document.getElementById("author").value;
+    let bookPages = document.getElementById("pages").value;
+    let bookRead = document.getElementById("read").value;
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
-
+    myLibrary[length] = newBook.info();
+    addBookToSite();
 }
 
 function addBookToSite() {
@@ -27,7 +28,6 @@ function addBookToSite() {
         bookContainer.appendChild(newBook);
     }
 }
-addBookToSite();
 
 function readStatus() {
 //Books already created read not read status
