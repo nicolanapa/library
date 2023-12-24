@@ -50,6 +50,9 @@ function addBookToSite(bookRead) { // Add the book in the website
                     newBook.appendChild(readButton);
                 }
         });
+        deleteButton.addEventListener("click", function() {
+            newBook.remove();
+        })
     }
 }
 
