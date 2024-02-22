@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <title>Library</title>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Library</title>
 
-        <link rel="stylesheet" href="./styles/styles.css" />
-        <script src="./scripts/javascript.js" defer></script>
-    </head>
-    <body>
-        <div class="yours">Your Library</div>
-        <div id="library"></div>
-        <div class="book-form">
-            <div class="newBookButton0">
-                <button id="newBookButton">NEW BOOK</button>
-            </div>
-            
-            <dialog id="book-dialog">
-                <form id="book-form" method="dialog" action="https://httpbin.org/post">
-                    <label for="title">Book's Title:</label>
-                    <input type="text" id="title" name="title">
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<script src="./scripts/javascript.js" defer></script>
+	</head>
+	<body>
+		<div class="yours">Your Library</div>
+		<div id="library"></div>
+		<div class="book-form">
+			<div class="newBookButton0">
+				<button id="newBookButton">NEW BOOK</button>
+			</div>
 
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+			<dialog id="book-dialog">
+				<form id="book-form" method="dialog" action="https://httpbin.org/post" novalidate>
+					<label for="title">Book's Title:</label>
+					<input type="text" id="title" name="title" required />
 
-                    <label for="pages">Pages:</label>
-                    <input type="text" id="pages" name="pages" placeholder="*** pages">
+					<label for="author">Author:</label>
+					<input type="text" id="author" name="author" required />
 
-                    <label for="read">Did you read it?</label>
-                    <input type="text" id="read" name="read" placeholder="read / not read it yet">
+					<label for="pages">Pages:</label>
+					<input type="number" id="pages" name="pages" min="1" required />
 
-                    <button id="form-button" type="submit">Submit your book!</button>
-                </form>
-            </dialog>
-            
-        </div>
-    </body>
+					<label for="read">Have you read it?</label>
+					<input
+						type="text"
+						id="read"
+						name="read"
+						placeholder="read / not read it yet"
+						required
+					/>
+
+					<button id="form-button" type="submit">Submit your book!</button>
+				</form>
+			</dialog>
+		</div>
+	</body>
 </html>
