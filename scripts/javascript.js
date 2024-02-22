@@ -83,11 +83,11 @@ function validateForm() {
 		if (title.validity.valueMissing) {
 			title.classList.remove("correct");
 			title.classList.add("error");
-            title.setCostumValidity("It can't be empty");
+            //title.setCostumValidity("It can't be empty");
 		} else {
 			title.classList.add("correct");
 			title.classList.remove("error");
-            title.setCostumValidity("");
+            //title.setCostumValidity("");
 		}
 
         title.reportValidity();
@@ -97,11 +97,11 @@ function validateForm() {
 		if (author.validity.valueMissing) {
 			author.classList.remove("correct");
 			author.classList.add("error");
-            author.setCostumValidity("It can't be empty");
+            //author.setCostumValidity("It can't be empty");
 		} else {
 			author.classList.add("correct");
 			author.classList.remove("error");
-            author.setCostumValidity("");
+            //author.setCostumValidity("");
 		}
 
         author.reportValidity();
@@ -111,15 +111,15 @@ function validateForm() {
 		if (pages.validity.rangeOverflow) {
 			pages.classList.remove("correct");
 			pages.classList.add("error");
-            pages.setCostumValidity("It can't be upper than 10000");
+            //pages.setCostumValidity("It can't be upper than 10000");
 		} else if (pages.validity.rangeUnderflow) {
 			pages.classList.remove("correct");
 			pages.classList.add("error");
-            pages.setCostumValidity("It can't be lower than 1");
+            //pages.setCostumValidity("It can't be lower than 1");
 		} else {
 			pages.classList.add("correct");
 			pages.classList.remove("error");
-            pages.setCostumValidity("");
+            //pages.setCostumValidity("");
 		}
 
         pages.reportValidity();
@@ -129,17 +129,17 @@ function validateForm() {
 		if (readYet.validity.valueMissing) {
 			readYet.classList.remove("correct");
 			readYet.classList.add("error");
-            readYet.setCostumValidity("It isn't 'read' or 'not read'");
+            //readYet.setCostumValidity("It isn't 'read' or 'not read'");
         }
 		if (readYet.value !== "read" || readYet.value !== "not read") {
 			readYet.classList.remove("correct");
 			readYet.classList.add("error");
-            readYet.setCostumValidity("It isn't 'read' or 'not read'");
+            //readYet.setCostumValidity("It isn't 'read' or 'not read'");
         }
 		if (readYet.value == "read" || readYet.value == "not read") {
 			readYet.classList.add("correct");
 			readYet.classList.remove("error");
-            readYet.setCostumValidity("");
+            //readYet.setCostumValidity("");
 		}
 
         readYet.reportValidity();
