@@ -1,13 +1,5 @@
 let myLibrary = [];
-/*function Book(title, autor, pages, read) {
-    this.title = title;
-    this.autor = autor;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        return title + " by " + autor + ", " + pages + ", " + read;
-    }
-}*/
+
 class Book {
 	constructor(title, autor, pages, read) {
 		this.title = title;
@@ -50,15 +42,15 @@ function addBookToSite(bookRead) {
 		newBook.appendChild(readButton);
 		readButton.addEventListener("click", function () {
 			if (bookRead == "read") {
-				bookRead = "not read it yet";
+				bookRead = "not read";
 				let myLibrary2 = myLibrary[i].toString();
-				newBook.textContent = myLibrary2.replace(/read/g, "not read it yet");
+				newBook.textContent = myLibrary2.replace("read", bookRead);
 				newBook.appendChild(deleteButton);
 				newBook.appendChild(readButton);
-			} else if (bookRead == "not read it yet") {
+			} else if (bookRead == "not read") {
 				bookRead = "read";
 				let myLibrary2 = myLibrary[i].toString();
-				newBook.textContent = myLibrary2.replace(/not read it yet/g, "read");
+				newBook.textContent = myLibrary2.replace("not read", bookRead);
 				newBook.appendChild(deleteButton);
 				newBook.appendChild(readButton);
 			}
@@ -82,13 +74,75 @@ formButton.addEventListener("click", function () {
 
 function validateForm() {
 	let form = document.querySelector("#book-form");
+	let title = document.querySelector("#title");
+	let author = document.querySelector("#author");
+	let pages = document.querySelector("#pages");
 	let readYet = document.querySelector("#read");
+
+	title.addEventListener("input", (event) => {
+		if (title.validity.valueMissing) {
+			title.classList.remove("correct");
+			title.classList.add("error");
+            title.setCostumValidity("It can't be empty");
+		} else {
+			title.classList.add("correct");
+			title.classList.remove("error");
+            title.setCostumValidity("");
+		}
+
+        title.reportValidity();
+	});
+
+	author.addEventListener("input", (event) => {
+		if (author.validity.valueMissing) {
+			author.classList.remove("correct");
+			author.classList.add("error");
+            author.setCostumValidity("It can't be empty");
+		} else {
+			author.classList.add("correct");
+			author.classList.remove("error");
+            author.setCostumValidity("");
+		}
+
+        author.reportValidity();
+	});
+
+	pages.addEventListener("input", (event) => {
+		if (pages.validity.rangeOverflow) {
+			pages.classList.remove("correct");
+			pages.classList.add("error");
+            pages.setCostumValidity("It can't be upper than 10000");
+		} else if (pages.validity.rangeUnderflow) {
+			pages.classList.remove("correct");
+			pages.classList.add("error");
+            pages.setCostumValidity("It can't be lower than 1");
+		} else {
+			pages.classList.add("correct");
+			pages.classList.remove("error");
+            pages.setCostumValidity("");
+		}
+
+        pages.reportValidity();
+	});
 
 	readYet.addEventListener("input", (event) => {
 		if (readYet.validity.valueMissing) {
-			readYet.classList.toggle("error");
-			event.preventDefault();
+			readYet.classList.remove("correct");
+			readYet.classList.add("error");
+            readYet.setCostumValidity("It isn't 'read' or 'not read'");
+        }
+		if (readYet.value !== "read" || readYet.value !== "not read") {
+			readYet.classList.remove("correct");
+			readYet.classList.add("error");
+            readYet.setCostumValidity("It isn't 'read' or 'not read'");
+        }
+		if (readYet.value == "read" || readYet.value == "not read") {
+			readYet.classList.add("correct");
+			readYet.classList.remove("error");
+            readYet.setCostumValidity("");
 		}
+
+        readYet.reportValidity();
 	});
 
 	form.addEventListener("submit", (event) => {
