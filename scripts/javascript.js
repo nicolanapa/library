@@ -67,10 +67,10 @@ buttonNewBook.addEventListener("click", function () {
 	dialogNewBook.showModal();
 });
 
-let formButton = document.querySelector("#form-button");
+/*let formButton = document.querySelector("#form-button");
 formButton.addEventListener("click", function () {
 	addBookToLibrary();
-});
+});*/
 
 function validateForm() {
 	let form = document.querySelector("#book-form");
@@ -83,76 +83,71 @@ function validateForm() {
 		if (title.validity.valueMissing) {
 			title.classList.remove("correct");
 			title.classList.add("error");
-            //title.setCostumValidity("It can't be empty");
 		} else {
 			title.classList.add("correct");
 			title.classList.remove("error");
-            //title.setCostumValidity("");
 		}
-
-        title.reportValidity();
 	});
 
 	author.addEventListener("input", (event) => {
 		if (author.validity.valueMissing) {
 			author.classList.remove("correct");
 			author.classList.add("error");
-            //author.setCostumValidity("It can't be empty");
 		} else {
 			author.classList.add("correct");
 			author.classList.remove("error");
-            //author.setCostumValidity("");
 		}
-
-        author.reportValidity();
 	});
 
 	pages.addEventListener("input", (event) => {
 		if (pages.validity.rangeOverflow) {
 			pages.classList.remove("correct");
 			pages.classList.add("error");
-            //pages.setCostumValidity("It can't be upper than 10000");
 		} else if (pages.validity.rangeUnderflow) {
 			pages.classList.remove("correct");
 			pages.classList.add("error");
-            //pages.setCostumValidity("It can't be lower than 1");
 		} else {
 			pages.classList.add("correct");
 			pages.classList.remove("error");
-            //pages.setCostumValidity("");
 		}
-
-        pages.reportValidity();
 	});
 
 	readYet.addEventListener("input", (event) => {
 		if (readYet.validity.valueMissing) {
 			readYet.classList.remove("correct");
 			readYet.classList.add("error");
-            //readYet.setCostumValidity("It isn't 'read' or 'not read'");
-        }
+		}
 		if (readYet.value !== "read" || readYet.value !== "not read") {
 			readYet.classList.remove("correct");
 			readYet.classList.add("error");
-            //readYet.setCostumValidity("It isn't 'read' or 'not read'");
-        }
+		}
 		if (readYet.value == "read" || readYet.value == "not read") {
 			readYet.classList.add("correct");
 			readYet.classList.remove("error");
-            //readYet.setCostumValidity("");
 		}
-
-        readYet.reportValidity();
 	});
 
 	form.addEventListener("submit", (event) => {
-		if (!true) {
-			showError();
-			event.preventDefault();
+		function finalControl() {
+			if (
+				title.validity.valid &&
+				author.validity.valid &&
+				(pages.validity.valid || pages.validity.valid) &&
+				(readYet.value == "read" || readYet.value == "not read")
+			) {
+				addBookToLibrary();
+			} else {
+				event.preventDefault();
+				showError();
+			}
 		}
+
+		finalControl();
 	});
 
-	function showError() {}
+	function showError() {
+		console.log("error");
+	}
 }
 
 validateForm();
